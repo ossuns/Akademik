@@ -44,8 +44,8 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
-		<th>Id Tentor</th>
-		<th>Id Mapel</th>
+		<th>Tentor</th>
+		<th>Mapel</th>
 		<th>Action</th>
             </tr><?php
             foreach ($mengajar_data as $mengajar)
@@ -53,8 +53,8 @@
                 ?>
                 <tr>
 			<td width="80px"><?php echo ++$start ?></td>
-			<td><?php echo $mengajar->id_tentor ?></td>
-			<td><?php echo $mengajar->id_mapel ?></td>
+			<td><?php echo $mengajar->nama_tentor ?></td>
+			<td><?php echo $mengajar->nama_mapel ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('mengajar/read/'.$mengajar->id_mengajar),'Read'); 

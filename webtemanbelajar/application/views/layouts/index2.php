@@ -36,9 +36,16 @@
 
             <!-- menu profile quick info -->
             <div class="profile clearfix">
+              <?php if($this->session->userdata('foto_profil')==null){ ?>
               <div class="profile_pic">
                 <img src="<?php echo base_url()?>asset/images/img.jpg" alt="..." class="img-circle profile_img">
+              </div><?php }else{ ?>
+
+              <div class="profile_pic">
+                <img src="<?php echo base_url()?>dokumen/profil/<?php  echo $this->session->userdata('foto_profil'); ?>" alt="..." class="img-circle profile_img">
               </div>
+            <?php } ?>
+
               <div class="profile_info">
                 <span>Welcome,</span>
                 <h2><?php echo $this->session->userdata('username'); ?></h2>
@@ -66,9 +73,9 @@
                       <li><?php echo anchor('tentor', 'List Tentor', array('class' => 'nav-link'));?></li>
                       <li><?php echo anchor('tentor/create', 'Buat Tentor', array('class' => 'nav-link'));?></li> 
                       <?php } ?>
-                      <?php if($this->session->userdata('status_tentor')=='Aktif'){ ?>
+                      
                       <li><?php echo anchor('tentor/update/'.$this->session->userdata('ses_id'), 'update Tentor', array('class' => 'nav-link'));?></li>
-                      <?php } ?>
+                      
                       <li><?php echo anchor('tentor/read/'.$this->session->userdata('ses_id'), 'Profile Tentor', array('class' => 'nav-link'));?></li>
                       
                     </ul>
@@ -85,11 +92,13 @@
                   <li><a><i class="fa fa-table"></i> Mapel <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><?php echo anchor('mapel', 'List Mapel', array('class' => 'nav-link'));?></li>
-                      <?php if($this->session->userdata('belum_lengkapi_data')!==null){ ?>
+                      <?php if($this->session->userdata('belum_lengkapi_data')!==null && $this->session->userdata('akses')!='1'){ ?>
                       <li><?php echo anchor('mengajar/create', 'Memilih Mapel', array('class' => 'nav-link'));?></li>
+                      <li><?php echo anchor('mengajar/index2', 'List data mengajar tentor', array('class' => 'nav-link'));?></li>
                       <?php } ?>
                       <?php if($this->session->userdata('akses')=='1'){ ?>
-                      <li><?php echo anchor('kursus/create', 'Create Mapel', array('class' => 'nav-link'));?></li>
+                      <li><?php echo anchor('mapel/create', 'Create Mapel', array('class' => 'nav-link'));?></li>
+                      <li><?php echo anchor('mengajar', 'List Data Mengajar', array('class' => 'nav-link'));?></li>
                       
                       <?php } ?>
                     </ul>
@@ -243,7 +252,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Teman Belajar - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -289,6 +298,8 @@
     </script>
     <script src="<?php echo base_url();?>/asset/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>/asset/vendors/bootstrap/dist/js/bootstrap-select.min.js"></script>
+    <script src="<?php echo base_url();?>/asset/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+    
     <!-- FastClick -->
     <script src="<?php echo base_url();?>/asset/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->

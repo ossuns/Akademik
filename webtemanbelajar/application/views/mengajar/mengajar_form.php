@@ -18,6 +18,11 @@
     }
             ?>
         <h2 style="margin-top:0px">Mengajar <?php echo $button ?></h2>
+        <?php if($this->session->userdata('status_tentor')=='Belum Aktif'){ ?>
+        <div class="alert alert-warning">
+                                    <i class="fa fa-close"></i> Akun anda belum aktif. Silahkan Lengkapi biodata anda terlebih dahulu.
+                                </div>
+    <?php } ?>
         <form action="<?php echo $action; ?>" method="post">
 	    <div class="form-group">
             <!-- <label for="int">Id Tentor <?php echo form_error('id_tentor') ?></label> -->
@@ -33,7 +38,14 @@
             ?>
         </div>
 	    <input type="hidden" name="id_mengajar" value="<?php echo $id_mengajar; ?>" /> 
+
+        <?php if($this->session->userdata('status_tentor')=='Aktif'){ ?>
 	    <button type="submit" class="btn btn-primary"><?php echo $button ?></button> 
+    <?php } ?>
+
+    <?php if($this->session->userdata('status_tentor')=='Belum Aktif'){ ?>
+        <button type="submit" disabled  class="btn btn-primary"><?php echo $button ?></button> 
+    <?php } ?>
 	    <a href="<?php echo site_url('mengajar') ?>" class="btn btn-default">Cancel</a>
 	</form>
     </body>

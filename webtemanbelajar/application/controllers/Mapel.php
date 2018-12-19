@@ -10,6 +10,7 @@ class Mapel extends CI_Controller
         parent::__construct();
         $this->load->model('Mapel_model');
         $this->load->library('form_validation');
+        $this->simple_login->cek_login();
     }
 
     public function index()

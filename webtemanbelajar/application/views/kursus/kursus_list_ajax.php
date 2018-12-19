@@ -9,29 +9,45 @@
 			<td><?php echo $kursus->harga_total ?></td>
 			<td><?php 
             if ($kursus->status_bayar=='belum bayar') {
-                echo  anchor(site_url('kursus/aktifasi_bayar_les/'.$kursus->id_kursus),' Aktifkan', 'class="btn btn-success btn-xs"');
+                echo '<button type="button" class="btn btn-success btn-xs">Aktifkan</button>';
+
             }else{
-                 echo '<button type="button" class="btn btn-primary btn-xss">Sudah Lunas</button>';
+                 echo '<button type="button" class="btn btn-primary btn-xs">Sudah Lunas</button>';
             }
               
             ?></td>
-			<td><?php echo $kursus->status_les ?></td>
-            <td><?php echo $kursus->status_booking ?></td>
-			<td><?php echo $kursus->jumlah_pertemuan ?></td>
-			<td style="text-align:center" width="200px">
-                <ul class="icons-list" style="float: left;">
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <i class="icon-menu9"></i>
-                        </a>
+            
 
-                        <ul class="dropdown-menu dropdown-menu-left">
-                          <li><?php echo anchor(site_url('order_detail.html?id='.$kursus->id_kursus),'<i class="icon-inbox-alt"></i>Detail'); ?></li>
-                          <li><?php echo anchor(site_url('#.html?id='.$kursus->id_kursus),'<i class="icon-cancel-square"></i>Hapus'); ?></li>
-                          <li><?php echo anchor(site_url('cetak_purchase_order.html?id='.$kursus->id_kursus),'<i class="icon-printer2"></i>Print','target="_blank"'); ?></li>
-                        </ul>
-                      </li>
-                    </ul>
+            <td><?php 
+            if ($kursus->status_les =='belum selesai') {
+                echo '<button type="button" class="btn btn-success btn-xs">sudah selesai</button>';
+                
+            }else{
+                 echo '<button type="button" class="btn btn-primary btn-xs">Sudah Selesai</button>';
+            }
+              
+            ?></td>
+
+            <td><?php 
+            if ($kursus->status_booking=='Di Tolak') {
+                echo '<button type="button" class="btn btn-success btn-xs">Approve</button>';
+            }else{
+                 echo '<button type="button" class="btn btn-primary btn-xs">Approved</button>';
+            }
+              
+            ?></td>
+			<td><?php echo $kursus->jumlah_pertemuan ?></td>
+			<?php 
+        $api = file_get_contents("https://maps.googleapis.com/maps/api/directions/json?origin=.$kursus->alamat_tentor.&destination=.$kursus->alamat.&key=AIzaSyBEnokw3oPkD2yeLCAfvdNdvKCSryEv864");
+            $data = json_decode($api);
+            $distance = $data->routes[0]->legs[0]->distance->text;
+            $duration = $data->routes[0]->legs[0]->duration->text;
+
+      ?>
+       <td><?php echo $distance ?></td>
+            <td><?php echo $duration ?></td>
+            <td><?php echo $kursus->tanggal ?></td>
+            <td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('kursus/read/'.$kursus->id_kursus),' ', 'class="glyphicon glyphicon-eye-open"'); 
 				echo ' | '; 

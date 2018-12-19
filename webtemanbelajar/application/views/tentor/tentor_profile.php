@@ -20,12 +20,10 @@
 
 <hr>
 <div class="container bootstrap snippet">
-    <div class="row">
-  		<div class="col-sm-10"><h1><?php echo $this->session->userdata('username'); ?></h1></div>
-    	<div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
-    </div>
+    
     <div class="row">
       <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src=<?php echo base_url('dokumen/profil/'.$foto_profil) ?>></a></div>
+      <?php $this->session->set_userdata('foto_profil', $foto_profil);?>
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
@@ -44,13 +42,13 @@
           </div>
           
           
-          <ul class="list-group">
+          <!-- <ul class="list-group">
             <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Jumlah Mapel</strong></span> 125</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Daftar Transaksi</strong></span> 13</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
             <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-          </ul> 
+          </ul>  -->
                
           <div class="panel panel-default">
             <div class="panel-heading">Social Media</div>
@@ -133,7 +131,7 @@
                           
                           <div class="col-xs-6">
                             <label for="password2"><h4>pekerjaan</h4></label>
-                              <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" placeholder="password2" value="<?php echo $pekerjaan; ?>">
+                              <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" placeholder="Pekerjaan" value="<?php echo $pekerjaan; ?>">
                           </div>
                       </div>
 
@@ -141,6 +139,7 @@
                           
                           <div class="col-xs-6">
                             <label for="password2"><h4>Deskripsi</h4></label>
+                            <!-- <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi" value="<?php echo $deskripsi; ?>" ></textarea> -->
                              <input type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi" value="<?php echo $deskripsi; ?>" />
                           </div>
                       </div>
@@ -150,8 +149,6 @@
                           <div class="col-xs-6">
                             <label for="password2"><h4>Foto KTP</h4></label>
                              <input type="file" class="form-control" name="foto_ktp" id="foto_ktp" placeholder="Foto Ktp" value="<?php echo $foto_ktp; ?>" />
-            <img src="<?php echo base_url('dokumen/ktp/'.$foto_ktp) ?>" style="width: 100%;" />
-
                           </div>
                       </div>
 
@@ -160,7 +157,6 @@
                           <div class="col-xs-6">
                             <label for="password2"><h4>Foto Ijazah</h4></label>
                              <input type="file" class="form-control" name="foto_ijazah" id="foto_ijazah" placeholder="Foto Ijazah" value="<?php echo $foto_ijazah; ?>" />
-            <img src="<?php echo base_url('dokumen/ijazah/'.$foto_ijazah) ?>" style="width: 100%;" />
                           </div>
                       </div>
 
@@ -169,11 +165,10 @@
                           <div class="col-xs-6">
                             <label for="password2"><h4>Foto Profil</h4></label>
                              <input type="file" class="form-control" name="foto_profil" id="foto_profil" placeholder="Foto Profil" value="<?php echo $foto_profil; ?>" />
-            <img src="<?php echo base_url('dokumen/profil/'.$foto_profil) ?>" style="width: 100%;"/>
                           </div>
                       </div>
 
-                      <input type="hidden" name="id_tentor" value="<?php echo $id_tentor; ?>">
+                      <input type="hidden" name="id_tentor" value="<?php echo $id_tentor; ?>"
                       </div>
 
                       <div class="form-group">

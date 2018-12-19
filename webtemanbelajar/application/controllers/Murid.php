@@ -10,6 +10,7 @@ class Murid extends CI_Controller
         parent::__construct();
         $this->load->model('Murid_model');
         $this->load->library('form_validation');
+        $this->simple_login->cek_login();
     }
 
     public function index()

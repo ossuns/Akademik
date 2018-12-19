@@ -23,7 +23,7 @@
             data: {
                 labels: MONTHS,
                 datasets: [{
-                    label: 'My First dataset',
+                    label: 'Grafik Data Transaksi',
                     backgroundColor: window.chartColors.red,
                     borderColor: window.chartColors.red,
                     data: data_perbulan,
@@ -34,7 +34,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: 'Chart.js Line Chart'
+                    text: 'Teman Belajar'
                 },
                 tooltips: {
                     mode: 'index',

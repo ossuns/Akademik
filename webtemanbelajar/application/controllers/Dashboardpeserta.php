@@ -7,6 +7,7 @@
             parent::__construct();
 
             $this->load->model(array('Dashboard2_model','Tentor_model'));
+            $this->simple_login->cek_login();
         }
 
         public function index() {

@@ -52,15 +52,15 @@ class Simple_login {
 			}
 			return false;*/
 	}
-	public function logintentor($username, $password) {
-		$query = $this->CI->db->get_where('tentor',array('nama_tentor'=>$username,'password' => md5($password)));
+	public function logintentor($email, $password) {
+		$query = $this->CI->db->get_where('tentor',array('email'=>$email,'password' => md5($password)));
 		if($query->num_rows() > 0) {
 
 			$data=$query->row_array();
 
 				$this->CI->session->set_userdata('akses','2');
                     $this->CI->session->set_userdata('ses_id',$data['id_tentor']);
-                    $this->CI->session->set_userdata('username',$username);
+                    $this->CI->session->set_userdata('username',$data['nama_tentor']);
                     redirect('/dashboardpeserta/');
 			
 
@@ -76,7 +76,7 @@ class Simple_login {
 			redirect('/dashboard/');*/
 		}else{
 			$this->CI->session->set_flashdata('sukses','Oops... Username/password salah');
-			redirect('/login/');
+			redirect('/tentor/login/');
 		}
 		return false;
 
@@ -95,8 +95,9 @@ class Simple_login {
 	public function logout() {
 		$this->CI->session->unset_userdata('username');
 		$this->CI->session->unset_userdata('id_login');
+		$this->CI->session->unset_userdata('foto_profil');
 		//$this->CI->session->unset_userdata('email');
 		$this->CI->session->set_flashdata('sukses','Anda berhasil logout');
-		redirect('admin/login/');
+		redirect('tentor/login/');
 	}
 }

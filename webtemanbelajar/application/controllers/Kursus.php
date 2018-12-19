@@ -10,6 +10,7 @@ class Kursus extends CI_Controller
         parent::__construct();
         $this->load->model('Kursus_model');
         $this->load->library('form_validation');
+         $this->simple_login->cek_login();
     }
 
     public function index()
@@ -61,7 +62,7 @@ class Kursus extends CI_Controller
 
         $config['per_page'] = 10;
         $config['page_query_string'] = TRUE;
-        $config['total_rows'] = $this->Kursus_model->total_rows($q);
+        $config['total_rows'] = $this->Kursus_model->total_rows_tentor($id,$q);
         $kursus = $this->Kursus_model->get_limit_data_tentor($id,$config['per_page'], $start, $q);
 
         $this->load->library('pagination');
@@ -131,7 +132,7 @@ class Kursus extends CI_Controller
 
         $config['per_page'] = 10;
         $config['page_query_string'] = TRUE;
-        $config['total_rows'] = $this->Kursus_model->total_rows($q);
+        $config['total_rows'] = $this->Kursus_model->total_rows_tentor($id,$q);
         $kursus = $this->Kursus_model->get_limit_data_tentor($id,$config['per_page'], $start, $q);
 
         $this->load->library('pagination');
@@ -276,9 +277,32 @@ class Kursus extends CI_Controller
         }
     }
 
+    public function map($alamat_tentor, $alamat_murid){
+        $data = array(
+        'alamat_tentor' => $alamat_tentor,
+        'alamat_murid' => $alamat_murid,
+        );
+        $this->load->view('map/map2', $data);
+        /*$this->template->set('title', '');
+        $this->template->load('index2', 'contents' , 'map/map2', $data);*/
+
+    }
+
     public function aktifasi_bayar_les($id){
          $row= $this->Kursus_model->aktifkan_status_bayar($id);
-        redirect(site_url('kursus'));
+        redirect(site_url('kursus/data_tentor'));
+    }
+     public function aktifasi_status_les($id){
+         $row= $this->Kursus_model->aktifkan_status_les($id);
+        redirect(site_url('kursus/data_tentor'));
+    }
+     public function aktifasi_status_booking($id){
+         $row= $this->Kursus_model->aktifkan_status_booking($id);
+        redirect(site_url('kursus/data_tentor'));
+    }
+    public function tolak_status_booking($id){
+         $row= $this->Kursus_model->tolak_status_booking($id);
+        redirect(site_url('kursus/data_tentor'));
     }
     public function chart(){
         $data = [];

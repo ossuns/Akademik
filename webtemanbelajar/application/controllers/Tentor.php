@@ -10,6 +10,7 @@ class Tentor extends CI_Controller
         parent::__construct();
         $this->load->model('Tentor_model');
         $this->load->library('form_validation');
+        $this->simple_login->cek_login();
     }
 
     public function index()

@@ -107,6 +107,22 @@ class Kursus_model extends CI_Model
 	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
+    function total_rows_tentor($id,$q = NULL) {
+        $this->db->where('tentor.id_tentor', $id);
+        $this->db->join('murid', 'kursus.id_murid = murid.id_murid');
+        $this->db->join('mengajar', 'kursus.id_mengajar = mengajar.id_mengajar');
+        $this->db->join('mapel', 'mengajar.id_mapel = mapel.id_mapel');
+        $this->db->join('tentor', 'mengajar.id_tentor = tentor.id_tentor');
+        /*$this->db->like('id_kursus', $q);
+    $this->db->or_like('Id_murid', $q);
+    $this->db->or_like('id_mengajar', $q);
+    $this->db->or_like('harga_total', $q);
+    $this->db->or_like('status_bayar', $q);
+    $this->db->or_like('status_les', $q);
+    $this->db->or_like('jumlah_pertemuan', $q);*/
+    $this->db->from($this->table);
+        return $this->db->count_all_results();
+    }
     function get_limit_data_tentor($id,$limit, $start = 0, $q = NULL) {
           $this->db->where('tentor.id_tentor', $id);
         $this->db->select('*');
@@ -177,6 +193,13 @@ class Kursus_model extends CI_Model
     function aktifkan_status_booking($id)
     {
         $this->db->set('status_booking','Approved');
+        $this->db->where($this->id, $id);
+        $query=$this->db->update('kursus');
+        return $query;
+    }
+    function tolak_status_booking($id)
+    {
+        $this->db->set('status_booking','Di Tolak');
         $this->db->where($this->id, $id);
         $query=$this->db->update('kursus');
         return $query;

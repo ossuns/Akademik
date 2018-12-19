@@ -40,11 +40,35 @@ class Mengajar_model extends CI_Model
 
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL) {
+        $this->db->select('*');
+        $this->db->join('tentor', 'tentor.id_tentor = mengajar.id_tentor');
+        $this->db->join('mapel', 'mapel.id_mapel = mengajar.id_mapel');
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_mengajar', $q);
-	$this->db->or_like('id_tentor', $q);
-	$this->db->or_like('id_mapel', $q);
+	$this->db->or_like('mengajar.id_tentor', $q);
+	$this->db->or_like('mengajar.id_mapel', $q);
 	$this->db->limit($limit, $start);
+        return $this->db->get($this->table)->result();
+    }
+
+    function total_rows_tentor($id,$q = NULL) {
+        $this->db->where('mengajar.id_tentor', $id);
+        /*$this->db->like('id_mengajar', $q);
+    $this->db->or_like('id_tentor', $q);
+    $this->db->or_like('id_mapel', $q);*/
+    $this->db->from($this->table);
+        return $this->db->count_all_results();
+    }
+     function get_limit_data_tentor($id, $limit, $start = 0, $q = NULL) {
+        $this->db->where('mengajar.id_tentor', $id);
+        $this->db->select('*');
+        $this->db->join('tentor', 'tentor.id_tentor = mengajar.id_tentor');
+        $this->db->join('mapel', 'mapel.id_mapel = mengajar.id_mapel');
+        $this->db->order_by($this->id, $this->order);
+       /* $this->db->like('id_mengajar', $q);
+    $this->db->or_like('mengajar.id_tentor', $q);
+    $this->db->or_like('mengajar.id_mapel', $q);*/
+    $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 

@@ -34,7 +34,7 @@
       <div class="wrap-login100">
         <div class="login100-form-title" style="background-image: url(datalogin/images/bg-01.jpg);">
           <span class="login100-form-title-1">
-            Sign In
+            Register Here
           </span>
         </div>
 
@@ -89,7 +89,7 @@
 
           <div class="container-login100-form-btn" >
             <button class="login100-form-btn" style="margin-right: 72px;">
-              Login
+              Register
             </button>
             <?php echo anchor(base_url(),'Cancel', 'class="login100-form-btn"'); ?>
           </div> 

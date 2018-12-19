@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Directions Service</title>
+    <title>Petunjuk Jalan</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -34,34 +34,14 @@
   <body>
     <div id="floating-panel">
     <b>Start: </b>
+
     <select id="start">
-      <option value="jakarta">jakarta</option>
-      <option value="st louis, mo">St Louis</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
+      <option value="<?php echo $alamat_tentor; ?>"><?php echo $alamat_tentor; ?></option>
     </select>
     <b>End: </b>
     <select id="end">
-      <option value="chicago, il">Chicago</option>
-      <option value="bandung">bandung</option>
-      <option value="joplin, mo">Joplin, MO</option>
-      <option value="oklahoma city, ok">Oklahoma City</option>
-      <option value="amarillo, tx">Amarillo</option>
-      <option value="gallup, nm">Gallup, NM</option>
-      <option value="flagstaff, az">Flagstaff, AZ</option>
-      <option value="winona, az">Winona</option>
-      <option value="kingman, az">Kingman</option>
-      <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
-      <option value="los angeles, ca">Los Angeles</option>
+      <option value="<?php echo $alamat_murid; ?>"><?php echo $alamat_murid; ?></option>
+      <option value="<?php echo $alamat_murid; ?>"><?php echo $alamat_murid; ?></option>
     </select>
     </div>
     <div id="map"></div>

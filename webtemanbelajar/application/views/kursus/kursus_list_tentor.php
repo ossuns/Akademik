@@ -3,7 +3,6 @@
         <h2 style="margin-top:0px">Kursus List</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
-                <?php echo anchor(site_url('kursus/create'),'Create', 'class="btn btn-primary"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -43,11 +42,15 @@
                 <th>No</th>
         <th>Nama Tentor</th>
         <th>Nama Murid</th>
+        <th>Nama Mapel</th>
         <th>Harga Total</th>
         <th>Status Bayar</th>
         <th>Status Les</th>
         <th>Status Booking</th>
         <th>Jumlah Pertemuan</th>
+        <th>Jarak</th>
+        <th>Waktu tempuh</th>
+        <th>Tanggal Pemesanan</th>
         <th>Action</th>
             </tr>
             </thead>

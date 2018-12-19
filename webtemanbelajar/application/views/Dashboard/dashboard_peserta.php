@@ -25,7 +25,7 @@
                   <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
                   <div class="count"><?php echo $jumlah_tentor?></div>
                   <h3>Jumlah Tentor</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                 
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -33,24 +33,10 @@
                   <div class="icon"><i class="fa fa-comments-o"></i></div>
                   <div class="count"><?php echo $jumlah_murid?></div>
                   <h3>Jumlah Murid</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                 
                 </div>
               </div>
-              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-                  <div class="count"><?php echo $jumlah_transaksi?></div>
-                  <h3>Jumlah transaksi</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
-                </div>
-              </div>
-              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                  <div class="count"><?php echo "Rp. ".$hasil;?></div>
-                  <h3>Total Pendapatan</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
-                </div>
+              
               </div>
             </div>
 
@@ -62,8 +48,8 @@
 
                                     if ($status_lunas === 'Belum Aktif') {
                                 ?>
-                                <div class="alert alert-warning">
-                                    <i class="fa fa-loading"></i> Akun anda belum aktif.
+                                <div class="alert alert-danger">
+                                    <i class="fa fa-close"></i> Akun anda belum aktif.
                                 </div>
                                 <?php
                                     }
@@ -73,7 +59,7 @@
 
                                     if ($bukti === null || $bukti === '') {
                                 ?>
-                                <div class="alert alert-danger">
+                                <div class="alert alert-warning">
                                     <i class="fa fa-close"></i> Anda belum melengkapi Profil anda. Silahkan lengkapi berkas anda.
                                 </div>
                                 <?php
@@ -87,8 +73,8 @@
                         </div>
 
             <?php
-            echo $this->session->userdata('username');
-            echo $this->session->userdata('ses_nama');
+            /*echo $this->session->userdata('username');
+            echo $this->session->userdata('ses_nama');*/
                   foreach ($data_tentor as $result) {
                   $label_condition = ($result['status'] === 'Belum Aktif') ? "danger" : "success";
                                 ?>
@@ -96,4 +82,5 @@
                <div class="label <?php echo "label-" . $label_condition; ?>">
                   <?php echo $result['status']; }?>
                </div>
-            </td>                   
+            </td>   
+            

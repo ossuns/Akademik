@@ -707,7 +707,7 @@ background control
     $('#video').remove();
     $body.addClass('slider-bg');
     for (var i = 1; i <= _imgAmount; i++) {
-      $('#img').append('<img src="asset/assets/img/bg/slideshow-' + (i < 10 ? '0' + i : i) + '.jpg">');
+      $('#img').append('<img src="http://localhost/webtemanbelajar/asset/assets/img/bg/slideshow-' + (i < 2 ? '0' + i : i) + '.jpg">');
     }
 
     $(window).on('load', function() {

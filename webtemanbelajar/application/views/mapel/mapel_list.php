@@ -13,7 +13,12 @@
         <h2 style="margin-top:0px">Mapel List</h2>
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
-                <?php echo anchor(site_url('mapel/create'),'Create', 'class="btn btn-primary"'); ?>
+
+                <?php 
+                if ($this->session->userdata('akses')=='1') {
+                         echo anchor(site_url('mapel/create'),'Create', 'class="btn btn-primary"');     # code...
+                }
+                ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -45,8 +50,8 @@
             <tr>
                 <th>No</th>
 		<th>Nama Mapel</th>
-		<th>Tarif 1</th>
-		<th>Tarif 2</th>
+		<th>Tarif</th>
+		
 		<th>Action</th>
             </tr><?php
             foreach ($mapel_data as $mapel)
@@ -56,7 +61,6 @@
 			<td width="80px"><?php echo ++$start ?></td>
 			<td><?php echo $mapel->nama_mapel ?></td>
 			<td><?php echo $mapel->tarif_1 ?></td>
-			<td><?php echo $mapel->tarif_2 ?></td>
 			<td style="text-align:center" width="200px">
 				<?php 
 				echo anchor(site_url('mapel/read/'.$mapel->id_mapel),' ', 'class="glyphicon glyphicon-eye-open"'); 

@@ -10,6 +10,7 @@ class Mengajar extends CI_Controller
         parent::__construct();
         $this->load->model(array('Mengajar_model','Mapel_model'));
         $this->load->library('form_validation');
+        $this->simple_login->cek_login();
     }
 
     public function index()
@@ -29,6 +30,40 @@ class Mengajar extends CI_Controller
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->Mengajar_model->total_rows($q);
         $mengajar = $this->Mengajar_model->get_limit_data($config['per_page'], $start, $q);
+
+        $this->load->library('pagination');
+        $this->pagination->initialize($config);
+
+        $data = array(
+            'mengajar_data' => $mengajar,
+            'q' => $q,
+            'pagination' => $this->pagination->create_links(),
+            'total_rows' => $config['total_rows'],
+            'start' => $start,
+        );
+        //$this->load->view('mengajar/mengajar_list', $data);
+        $this->template->set('title', '');
+        $this->template->load('index2', 'contents' , 'mengajar/mengajar_list',$data);
+    }
+
+    public function index2()
+    {
+        $id=$this->session->userdata('ses_id');
+        $q = urldecode($this->input->get('q', TRUE));
+        $start = intval($this->input->get('start'));
+        
+        if ($q <> '') {
+            $config['base_url'] = base_url() . 'mengajar/index.html?q=' . urlencode($q);
+            $config['first_url'] = base_url() . 'mengajar/index.html?q=' . urlencode($q);
+        } else {
+            $config['base_url'] = base_url() . 'mengajar/index.html';
+            $config['first_url'] = base_url() . 'mengajar/index.html';
+        }
+
+        $config['per_page'] = 10;
+        $config['page_query_string'] = TRUE;
+        $config['total_rows'] = $this->Mengajar_model->total_rows_tentor($id,$q);
+        $mengajar = $this->Mengajar_model->get_limit_data_tentor($id,$config['per_page'], $start, $q);
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
@@ -92,7 +127,7 @@ class Mengajar extends CI_Controller
 
             $this->Mengajar_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('mengajar'));
+            redirect(site_url('mengajar/index2'));
         }
     }
     
@@ -113,7 +148,7 @@ class Mengajar extends CI_Controller
         $this->template->load('index2', 'contents' , 'mengajar/mengajar_form',$data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('mengajar'));
+            redirect(site_url('mengajar/index2'));
         }
     }
     

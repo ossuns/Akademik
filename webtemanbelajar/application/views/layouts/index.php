@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
-<title>DOTA 2 Tournament</title>
+<title>Teman Belajar</title>
 <link rel='stylesheet' href='<?php echo base_url();?>/asset/assets/css/bootstrap.min.css'>
 <link rel='stylesheet' href='<?php echo base_url();?>/asset/assets/css/style.css'>
 <link rel='stylesheet' href='<?php echo base_url();?>/asset/assets/css/color.css'>
@@ -46,8 +46,8 @@
           <div class="col-xs-12">
             <!-- header brand -->
             <div class="header-brand">
-              <img class="header-logo logo-light" src="<?php echo base_url();?>/asset/assets/img/logo-light.png" alt="">
-              <img class="header-logo logo-dark" src="<?php echo base_url();?>/asset/assets/img/logo-dark.png" alt="">
+              <img class="header-logo logo-light" src="<?php echo base_url();?>/asset/assets/img/logo_temanbelajar.png" alt="">
+              <img class="header-logo logo-dark" src="<?php echo base_url();?>/asset/assets/img/logo_temanbelajar.png" alt="">
             </div>
             <!-- header brand -->
 
@@ -90,7 +90,7 @@
               <!-- section header -->
               <div class="section-header row text-center">
                 <div class="col-xs-12">
-                  <p class="animation section-subtitle">SMART IT FEST 2018.</p>
+                  <p class="animation section-subtitle">TEMAN BELAJAR</p>
                   <h1 class="section-title">
                     <span class="section-title-span">Teman Belajar</span>
                     <!-- <span class="section-title-span">New Line Title</span> -->
